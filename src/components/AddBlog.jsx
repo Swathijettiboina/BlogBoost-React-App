@@ -1,0 +1,57 @@
+import React, { useState } from 'react'
+import Blog from './Blog';
+
+const AddBlog = () => {
+  const [BlogTitle,setBlogTitle]=useState("");
+  const [BlogDescription,setBlogDescription]=useState("");
+  const [BlogImage,setBlogImage]=useState("");
+  const [BlogContent,setBlogContent]=useState("");
+  const [id,setId]=useState();
+
+
+
+  const addBlogHandle=()=>{
+    console.log("loading")
+    var count=parseInt(localStorage.getItem("blog_count"))||0;
+    count += 1;
+    localStorage.setItem("blog_count", count);
+    setId(Date.now())
+    let blog = {
+      "Id": id,
+      "Title": BlogTitle,
+      "Description": BlogDescription,
+      "Image":BlogImage,
+      "Content":BlogContent,
+      "Read_count":parseInt(0)
+      }; 
+      var blogs = JSON.parse(localStorage.getItem("blogs")) || [];
+      blogs.push(blog);
+      localStorage.setItem("blogs", JSON.stringify(blogs));
+    window.location.href='/';
+  }
+  return (
+    <div>
+      <label for="blog_title" className="block font-bold text-xl mb-2">Blog Title</label>
+        <input type="text"  placeholder="Enter Blog Title" required 
+         onChange={(e)=>{setBlogTitle(e.target.value)}} className="w-full border border-gray-400 p-2 rounded mb-4"/>
+
+        <label for="blog_description" className="block font-bold text-xl mb-2">Blog Description</label>
+        <input  placeholder="Enter Blog Description"  
+        onChange={(e)=>{setBlogDescription(e.target.value)}} className="w-full border border-gray-400 p-2 rounded mb-4 placeholder-gray-500"/>
+
+        <label for="blog_image" className="block font-bold text-xl mb-2">Blog Image</label>
+        <input type="text" placeholder="Enter image url for blog" required 
+        onChange={(e)=>{setBlogImage(e.target.value)}} className="w-full border border-gray-400 p-2 rounded mb-4"/>
+
+        <label for="blog_content" className="block font-bold text-xl mb-2">Blog Content</label>
+        <textarea type="text"  rows="8" cols="6" placeholder="Enter blog content" required 
+        onChange={(e)=>{setBlogContent(e.target.value)}} className="w-full border border-gray-400 p-2 rounded mb-4"/>
+                
+        <button type="button"  onClick={addBlogHandle} className="bg-blue-600 text-white py-2 px-4 rounded hover:bg-blue-700">
+                    Submit
+        </button>
+    </div>
+  )
+}
+
+export default AddBlog
