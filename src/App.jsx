@@ -1,6 +1,6 @@
 import { BrowserRouter, Routes, Route } from "react-router";
 import Home from "./components/Home";
-import AddBlog from "./components/Addblog";
+import AddBlog from "./components/AddBlog";
 import Footer from "./components/Footer";
 
 

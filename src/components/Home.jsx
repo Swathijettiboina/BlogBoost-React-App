@@ -1,14 +1,16 @@
-import React from 'react'
-import Header from './Header'
-import Body from './Body'
-import Footer from './Footer'
+import React from "react";
+import Header from "./Header";
+import Blogs from "./Blogs";
+// import Footer from "./Footer";
 const Home = () => {
   return (
-    <div>
-      <Header/>
-      <Body/>
+    <>
+      <Header />
+      <div className="grid grid-rows-1">
+        <Blogs />
+      </div>
       {/* <Footer/> */}
-    </div>
-  )
-}
-export default Home
+    </>
+  );
+};
+export default Home;

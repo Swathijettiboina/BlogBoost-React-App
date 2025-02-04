@@ -1,23 +1,18 @@
 import React, { useState } from 'react'
-import Blog from './Blog';
 
 const AddBlog = () => {
   const [BlogTitle,setBlogTitle]=useState("");
   const [BlogDescription,setBlogDescription]=useState("");
   const [BlogImage,setBlogImage]=useState("");
   const [BlogContent,setBlogContent]=useState("");
-  const [id,setId]=useState();
 
-
-
-  const addBlogHandle=()=>{
-    console.log("loading")
+    const addBlogHandle=()=>{
+    // console.log("loading")
     var count=parseInt(localStorage.getItem("blog_count"))||0;
     count += 1;
     localStorage.setItem("blog_count", count);
-    setId(Date.now())
     let blog = {
-      "Id": id,
+      "Id": Date.now(),
       "Title": BlogTitle,
       "Description": BlogDescription,
       "Image":BlogImage,
@@ -27,11 +22,15 @@ const AddBlog = () => {
       var blogs = JSON.parse(localStorage.getItem("blogs")) || [];
       blogs.push(blog);
       localStorage.setItem("blogs", JSON.stringify(blogs));
+      window.location.href='/';
+  }
+  const discardHandle=()=>{
     window.location.href='/';
   }
   return (
-    <div>
-      <label for="blog_title" className="block font-bold text-xl mb-2">Blog Title</label>
+    // <div className='flex justify-center items-center'>
+    <div className='m-[5%] p-[2%] bg-amber-50 justify-center items-center border-2'>
+      <label for="blog_title" className="block justify-center font-bold text-xl mb-2">Blog Title</label>
         <input type="text"  placeholder="Enter Blog Title" required 
          onChange={(e)=>{setBlogTitle(e.target.value)}} className="w-full border border-gray-400 p-2 rounded mb-4"/>
 
@@ -46,10 +45,16 @@ const AddBlog = () => {
         <label for="blog_content" className="block font-bold text-xl mb-2">Blog Content</label>
         <textarea type="text"  rows="8" cols="6" placeholder="Enter blog content" required 
         onChange={(e)=>{setBlogContent(e.target.value)}} className="w-full border border-gray-400 p-2 rounded mb-4"/>
-                
-        <button type="button"  onClick={addBlogHandle} className="bg-blue-600 text-white py-2 px-4 rounded hover:bg-blue-700">
-                    Submit
+
+        <div className='flex justify-center items-center gap-10'>
+        <button type="button"  onClick={discardHandle} className="bg-blue-600 text-white py-2 px-4 rounded hover:bg-blue-700">
+                    Discard
         </button>
+        <button type="button"  onClick={addBlogHandle} className="bg-blue-600 text-white py-2 px-4 rounded hover:bg-blue-700">
+                    Add Blog
+        </button>
+        </div>     
+        {/* </div> */}
     </div>
   )
 }
