@@ -6,7 +6,7 @@ const EditPopup = ({ blog }) => {
     const [BlogDescription,setBlogDescription]=useState(blog.Description);
     const [BlogImage,setBlogImage]=useState(blog.Image);
     const [BlogContent,setBlogContent]=useState(blog.Content);
-    // const [blogs,setBlogs]=useState()
+
     useEffect(()=>{
         setBlogTitle(blog.Title);
         setBlogDescription(blog.Description);

@@ -1,7 +1,8 @@
 import React, { useState,useEffect } from 'react'
-import {Eye} from "lucide-react"
+import {Eye,Heart, Pencil, Trash2} from "lucide-react"
 import ReadBlogPopup from "./ReadBlogPopup";
 import EditPopup from './EditPopup';
+
 
 const BlogCard = (props) => {
     const [showPopup, setShowPopup] = useState(false);
@@ -9,6 +10,12 @@ const BlogCard = (props) => {
 
     const [seletedEditBlog,setSeletedEditBlog]=useState(null);
     const [showEditablePopup,setShowEditablePopup]=useState(false);
+
+    const [liked, setLiked] = useState(false);
+
+    useEffect(() => {
+      localStorage.setItem("blogs", JSON.stringify(props.blogs));
+    }, [props.blogs]);
 
     const deleteBlog = (id) => {
         // console.log(id);
@@ -20,10 +27,10 @@ const BlogCard = (props) => {
 
        const readBlogHandle = (id) => {
           const readingBlog=props.blogs.find((blog) => blog.Id === id);
-        //   const updatedBlogs =props.blogs.map((blog) =>
-        //     blog.Id === id ? { ...blog, Read_count: (blog.Read_count || 0) + 1 }: blog);
-        //   props.setBlogs(updatedBlogs);
-        //   localStorage.setItem("blogs", JSON.stringify(updatedBlogs));
+          const updatedBlogs = props.blogs.map((blog) =>
+            blog.Id === id ? { ...blog, Read_count: (parseInt(blog.Read_count) || 0)+ 1 }: blog);
+          props.setBlogs(updatedBlogs);
+          localStorage.setItem("blogs", JSON.stringify(updatedBlogs));
       
           setSelectedBlog(readingBlog);
           setShowPopup(true);
@@ -36,26 +43,40 @@ const BlogCard = (props) => {
        }; 
   return (
     <>
-        <div key={props.Id} className="text-center break-words text-wrap rounded overflow-hidden shadow-lg bg-white m-1 p-5 hover:shadow-lg hover:bg-blue-300">
+        <div key={props.Id} className="text-center flex rounded  shadow-lg bg-white m-1 p-5 hover:shadow-lg hover:bg-blue-200">
           
-          <h2 className="text-xl rounded-lg w-auto bold shadow-lg text-black bg-blue-100"> {props.Title} </h2>
-          <img src={props.Image} alt="blog image" />
-          <p className="text-black bg-blue-50 p-2">{props.Description}</p>
+          <div className='justify-around w-3/4 '>
+          <img src={props.Image} alt="blog image" className='rounded-3xl w-80 h-50'/>
+          </div>
+          <div className='flex flex-col gap-3 justify-center items-center'>
+          <h2 className="text-2xl rounded-sm p-2 w-auto bold shadow-xl text-black bg-blue-100"> {props.Title} </h2>
+          
+          <p className="text-black rounded-lg text-l bg-blue-50 shadow-2xs p-2">{props.Description}</p>
+          </div>
+          
+          
+
+          <button onClick={() => setLiked(!liked)} className="p-2 rounded-full">
+            <Heart size={25}  strokeWidth={1} absoluteStrokeWidth 
+            fill={liked ? "red" : "none"} color={liked ? "pink" : "black"} /></button>
 
           <div className="flex justify-between items-center gap-2 rounded-[20px] px-1 py-1">
-            <div className=""><Eye /><span>{localStorage.getItem(`Read_count${props.Id}`) || 0}</span></div>
+            <div><Eye size={23} strokeWidth={1} absoluteStrokeWidth />
+            {props.Read_count/2}
+          </div>
 
             <button type="button"onClick={() => readBlogHandle(props.Id)} className="bg-gray-200 rounded-lg px-3 py-2 hover:underline">
-              Read              
+              Read             
               {showPopup && selectedBlog?.Id === props.Id && ( <ReadBlogPopup blog={selectedBlog} />)}
             </button>
-
-            <button type="button" onClick={() => editBlog(props.Id)} className="bg-red-200 rounded-lg px-3 py-2 hover:underline">
-              Edit {showEditablePopup && seletedEditBlog?.Id === props.Id && ( <EditPopup blog={seletedEditBlog} />)}  
-              </button>
+            
+            <button type="button" onClick={() => editBlog(props.Id)} className="bg-gray-200 rounded-lg px-3 py-2 hover:underline">
+            <Pencil strokeWidth={1} absoluteStrokeWidth /> 
+            {showEditablePopup && seletedEditBlog?.Id === props.Id && ( <EditPopup blog={seletedEditBlog} />)}  
+            </button>
 
             <button type="button" onClick={() => deleteBlog(props.Id)} className="bg-red-200 rounded-lg px-3 py-2 hover:underline">
-              Delete</button>
+            <Trash2 strokeWidth={1} absoluteStrokeWidth /></button>
           </div>
         </div>
     </>   

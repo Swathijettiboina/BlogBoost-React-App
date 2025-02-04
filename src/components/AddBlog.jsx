@@ -17,7 +17,7 @@ const AddBlog = () => {
       "Description": BlogDescription,
       "Image":BlogImage,
       "Content":BlogContent,
-      "Read_count":parseInt(0)
+      "Read_count":parseInt(0),
       }; 
       var blogs = JSON.parse(localStorage.getItem("blogs")) || [];
       blogs.push(blog);
