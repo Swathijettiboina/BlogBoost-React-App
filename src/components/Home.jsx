@@ -6,6 +6,7 @@ const Home = () => {
   return (
     <>
       <Header />
+      
       <div className="grid grid-rows-1">
         <Blogs />
       </div>

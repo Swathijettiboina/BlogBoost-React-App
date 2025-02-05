@@ -33,7 +33,7 @@ const EditPopup = ({ blog }) => {
       }
 
     return (
-    <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center">
+    <div className="fixed inset-0 bg-black bg-opacity-50 z-20 flex items-center justify-center">
         <div className='p-5 border-2 rounded-3xl w-3xl bg-amber-50 justify-center items-center'>
         <label for="blog_title" className="block justify-center font-bold text-xl mb-2">Blog Title</label>
         <input type="text"  placeholder="Enter Blog Title" required value={BlogTitle}

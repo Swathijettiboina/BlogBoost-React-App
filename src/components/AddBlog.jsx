@@ -9,7 +9,8 @@ const AddBlog = () => {
 
   useEffect(() => {
     const existingBlogs = JSON.parse(localStorage.getItem("blogs")) || [];
-    if (!existingBlogs || existingBlogs.length === 0) {
+    
+    if (existingBlogs.length === 0) {
       const defaultBlogs = [
         {
           Id: 1,
@@ -44,8 +45,8 @@ const AddBlog = () => {
     } else {
       setBlogs(existingBlogs);
     }
-    window.location.reload();
-  });
+  }, []);
+  
 
   const addBlogHandle = () => {
     let updatedBlogs = [...blogs];
@@ -83,10 +84,10 @@ const AddBlog = () => {
       <textarea rows="8" placeholder="Enter blog content" required onChange={(e) => setBlogContent(e.target.value)} className="w-full border border-gray-400 p-2 rounded mb-4" />
 
       <div className="flex justify-center items-center gap-10">
-        <button type="button" onClick={discardHandle} className="bg-blue-600 text-white py-2 px-4 rounded hover:bg-blue-700">
+        <button type="button" onClick={()=>{discardHandle()}} className="bg-blue-600 text-white py-2 px-4 rounded hover:bg-blue-700">
           Discard
         </button>
-        <button type="button" onClick={addBlogHandle} className="bg-blue-600 text-white py-2 px-4 rounded hover:bg-blue-700">
+        <button type="button" onClick={()=>{addBlogHandle()}} className="bg-blue-600 text-white py-2 px-4 rounded hover:bg-blue-700">
           Add Blog
         </button>
       </div>

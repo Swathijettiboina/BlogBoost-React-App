@@ -52,7 +52,7 @@ const BlogCard = (props) => {
 
   return (
     <>
-      <div key={props.Id} className="text-center flex rounded shadow-lg bg-white m-1 p-5 hover:shadow-lg hover:bg-blue-200">
+<div key={props.Id} className="text-center flex rounded shadow-lg bg-white m-1 p-5 hover:shadow-lg transition-shadow hover:bg-blue-100">
         <div className="justify-around w-3/4">
           <img src={props.Image} alt="blog image" className="rounded-3xl w-80 h-50" />
         </div>
