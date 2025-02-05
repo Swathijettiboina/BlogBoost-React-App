@@ -74,11 +74,6 @@ Follow these steps to get a local copy up and running:
 - **Commenting on Blogs**:
   - Users can add comments to each blog, and those comments are saved in localStorage.
 
-## File Structure
-
-/blogboost ├── /src │ ├── /components │ │ ├── BlogList.js │ │ ├── BlogPost.js │ │ ├── CreateBlog.js │ │ ├── EditBlog.js │ │ ├── DeleteBlog.js │ │ ├── LikeButton.js │ │ ├── CommentSection.js │ ├── App.js │ ├── index.js │ └── /assets ├── /public ├── /node_modules ├── package.json └── README.md
-
-
 ## Contribution
 
 Contributions are welcome! If you'd like to contribute to BlogBoost, feel free to fork the repository and submit a pull request. Here's how you can contribute:
