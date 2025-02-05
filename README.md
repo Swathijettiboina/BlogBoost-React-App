@@ -31,12 +31,12 @@ Follow these steps to get a local copy up and running:
 
 1. Clone the repository:
     ```bash
-    git clone https://github.com/your-username/blogboost.git
+    git clone [https://github.com/your-username/blogboost.git](https://github.com/Swathijettiboina/BlogBoost-React-App.git)
     ```
 
 2. Navigate to the project directory:
     ```bash
-    cd blogboost
+    cd BlogBoost-React-App
     ```
 
 3. Install the required dependencies:
@@ -46,10 +46,10 @@ Follow these steps to get a local copy up and running:
 
 4. Run the development server:
     ```bash
-    npm start
+    npm run dev
     ```
 
-   This will start the app in development mode and open it in your browser at [http://localhost:3000](http://localhost:3000).
+   This will start the app in development mode and open it in your browser at [http://localhost:3000](http://localhost:5173).
 
 ## Usage
 
