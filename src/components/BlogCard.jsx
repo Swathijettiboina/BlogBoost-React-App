@@ -13,6 +13,7 @@ const BlogCard = (props) => {
 
     const [liked, setLiked] = useState(false);
     const [likeCount, setLikeCount] = useState(props.Like_count || 0);
+    const [celebrate, setCelebrate] = useState(false);
 
     useEffect(() => {
       localStorage.setItem("blogs", JSON.stringify(props.blogs));
@@ -21,6 +22,8 @@ const BlogCard = (props) => {
     const handleLike = () => {
       setLiked(!liked); // Toggle the liked state
       setLikeCount(liked ? likeCount - 1 : likeCount + 1); // Update like count based on liked state
+      setCelebrate(true);
+    setTimeout(() => setCelebrate(false), 1000);
     };
     
     const deleteBlog = (id) => {
@@ -71,9 +74,12 @@ const BlogCard = (props) => {
           </div>
 
           <div>
-              <button  onClick={handleLike} className="rounded-full" >
-              <Heart size={25} strokeWidth={1}  fill={liked ? "red" : "none"}  color={liked ? "red" : "black"} /></button>
-              {/* <div>{likeCount}</div>  */}
+          <button
+        onClick={handleLike}
+        className={`rounded-full transform transition-all duration-300 ${celebrate ? 'scale-125' : 'scale-100'} ${liked ? 'text-red-500' : 'text-black'}`}
+      >
+        <Heart size={25} strokeWidth={1} fill={liked ? "red" : "none"} color={liked ? "red" : "black"} />
+      </button>
          </div>
          
 

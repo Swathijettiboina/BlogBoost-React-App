@@ -46,15 +46,11 @@ export const ReadBlogPopup = ({ blog }) => {
       <div className="p-4 m-5 mt-5 g-5">
         <h2 className="text-5xl font-extrabold italic">{blog.Title}</h2>
 
-        <div className="float-left shadow-2xl">
-          <img
-            src={blog.Image}
-            alt="blog"
-            className="w-90 h-60 rounded-2xl"
-          />
+        <div className="float-left shadow-2xl m-4">
+          <img src={blog.Image} alt="blog" className="w-90 h-60 rounded-2xl" />
         </div>
 
-        <div className="p-5 gap-3">
+        <div className="p-10 gap-3">
           <p>{blog.Content}</p>
         </div>
 
@@ -69,16 +65,19 @@ export const ReadBlogPopup = ({ blog }) => {
 
         {/* Comment Area - Positioned at Bottom Right */}
         <div className="fixed bottom-4 right-4 w-80 h-80 bg-white shadow-xl p-4 rounded-lg">
-          <p className="font-semibold text-lg">Add Comments</p>
+          <p className="font-semibold text-lg">Do Comment Here</p>
 
           {/* Display Existing Comments */}
           <div className="h-24 overflow-y-auto mb-2">
             {comments.length > 0 ? (
-              comments.slice().reverse().map((comment) => (
-                <div key={comment.id} className="border-b py-1">
-                  <p>{comment.text}</p>
-                </div>
-              ))
+              comments
+                .slice()
+                .reverse()
+                .map((comment) => (
+                  <div key={comment.id} className="border-b py-1">
+                    <p>{comment.text}</p>
+                  </div>
+                ))
             ) : (
               <p>No comments yet.</p>
             )}
