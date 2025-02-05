@@ -9,7 +9,7 @@ const Home = () => {
       <div className="grid grid-rows-1">
         <Blogs />
       </div>
-      <div className="p-4 h-auto bg-blue-200 md:p-8 lg:p-10 w-full dark:bg-gray-800">
+      <div className="p-1 h-auto fixed bottom-0 bg-gray-200  w-full dark:bg-gray-800">
         <Footer />
       </div>
     </>
