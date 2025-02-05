@@ -16,7 +16,7 @@ const Header = () => {
        <div className="flex flex-row justify-between items-center gap-5 p-5">
         <Link to="/" className="border-1 p-2 rounded-md hover:bg-gray-400">Home</Link>
         <Link to="/addblog" className="border-1 p-2 rounded-md hover:bg-gray-400">Add Blog</Link>
-        <Link to="/about" className="border-1 p-2 rounded-md hover:bg-gray-400">About</Link>
+        <Link to="/" className="border-1 p-2 rounded-md hover:bg-gray-400">About</Link>
         <Link to="#" className="border-1 p-2 rounded-md hover:bg-gray-400">Profile</Link>
       </div> 
     </div>
