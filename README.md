@@ -31,7 +31,7 @@ Follow these steps to get a local copy up and running:
 
 1. Clone the repository:
     ```bash
-    git clone [https://github.com/your-username/blogboost.git](https://github.com/Swathijettiboina/BlogBoost-React-App.git)
+    git clone https://github.com/Swathijettiboina/BlogBoost-React-App.git
     ```
 
 2. Navigate to the project directory:
